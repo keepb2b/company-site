@@ -1,0 +1,41 @@
+import { Link } from 'react-router-dom'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
+import { useI18n } from '../../i18n'
+
+export function CTASection() {
+  const ref = useScrollReveal<HTMLElement>()
+  const { dict } = useI18n()
+
+  return (
+    <section ref={ref} className="footer-consult-section">
+      <div className="footer-consult-card scroll-reveal">
+        <div className="footer-consult-copy">
+          <p className="footer-consult-lead">{dict.cta.title}</p>
+          <a href="tel:03-1234-5678" className="footer-consult-phone">
+            <span aria-hidden>☎</span>
+            03-1234-5678
+          </a>
+          <p className="footer-consult-hours">{dict.common.phoneHours}</p>
+          <span className="footer-consult-watermark" aria-hidden>
+            CONSULTATION / QUOTATION
+          </span>
+        </div>
+
+        <div className="footer-consult-actions">
+          <Link to="/contact" className="footer-consult-button">
+            <span className="footer-consult-button-icon" aria-hidden>
+              ✉
+            </span>
+            {dict.common.freeConsult}
+          </Link>
+          <Link to="/chatwork" className="footer-consult-button">
+            <span className="footer-consult-chatmark" aria-hidden>
+              ●●●
+            </span>
+            {dict.cta.chatwork}
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}

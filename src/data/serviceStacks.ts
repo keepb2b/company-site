@@ -1,0 +1,20 @@
+/** Technology stacks aligned with service numbers (01–17). */
+export const serviceStacks: Record<string, readonly string[]> = {
+  '01': ['Python', 'FastAPI', 'OpenAI API', 'LangChain', 'Redis', 'WebSocket', 'ONNX Runtime'],
+  '02': ['Python', 'Azure AI', 'OCR', 'Celery', 'PostgreSQL', 'RPA', 'LayoutLM'],
+  '03': ['Node.js', 'GraphQL', 'REST', 'OpenAPI', 'Kong', 'OAuth 2.0', 'gRPC'],
+  '04': ['AWS', 'GCP', 'Terraform', 'Docker', 'Kubernetes', 'GitHub Actions', 'Prometheus'],
+  '05': ['WordPress', 'Movable Type', 'Sanity', 'Next.js', 'PHP', 'Headless CMS', 'Algolia'],
+  '06': ['Salesforce API', 'HubSpot', 'Node.js', 'PostgreSQL', 'Redis', 'Segment'],
+  '07': ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
+  '08': ['React', 'D3.js', 'BigQuery', 'Looker Studio', 'Python', 'Apache Superset'],
+  '09': ['Shopify', 'EC-CUBE', 'Makeshop', 'Liquid', 'PHP', 'Stripe'],
+  '10': ['SAP API', 'Node.js', 'PostgreSQL', 'EDI', 'Java', 'RabbitMQ'],
+  '11': ['Lighthouse', 'Sentry', 'Git', 'CI/CD', 'WordPress', 'Security Patches'],
+  '12': ['Amazon SP-API', 'Rakuten API', 'Yahoo Shopping API', 'Node.js', 'Python'],
+  '13': ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'App Store Connect'],
+  '14': ['Next.js', 'PostgreSQL', 'Stripe', 'Auth0', 'Multi-tenant', 'Vercel'],
+  '15': ['Shopify API', 'eBay API', 'Amazon SP-API', 'Node.js', 'Python', 'Webhooks'],
+  '16': ['Figma', 'React', 'Next.js', 'Tailwind CSS', 'GSAP', 'Storybook'],
+  '17': ['n8n', 'Zapier', 'Node.js', 'Slack API', 'Webhooks', 'Make'],
+}
