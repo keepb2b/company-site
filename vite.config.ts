@@ -25,14 +25,14 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: ['nippon-systems.onrender.com'],
+    allowedHosts: ['company-site-jdw6.onrender.com'],
     port: 3000,
     strictPort: false,
     open: false,
   },
   preview: {
     host: true,
-    allowedHosts: ['nippon-systems.onrender.com'],
+    allowedHosts: ['company-site-jdw6.onrender.com'],
     port: 3000,
     strictPort: false,
   },
