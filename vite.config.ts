@@ -25,14 +25,14 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: ['noppin-systems-1.onrender.com'],
+    allowedHosts: ['nippin-systems.onrender.com'],
     port: 3000,
     strictPort: false,
     open: false,
   },
   preview: {
     host: true,
-    allowedHosts: ['noppin-systems-1.onrender.com'],
+    allowedHosts: ['nippin-systems.onrender.com'],
     port: 3000,
     strictPort: false,
   },
