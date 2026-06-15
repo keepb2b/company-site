@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { PageHero } from '../components/layout/PageHero'
 import { useI18n } from '../i18n'
 
 export function ContactPage() {
   const { dict } = useI18n()
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   return (
     <>
@@ -16,9 +18,28 @@ export function ContactPage() {
           <div className="contact-form-card">
             <form
               className="contact-form"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault()
-                alert(dict.contact.success)
+                setStatus('sending')
+
+                const form = e.currentTarget
+                const formData = new FormData(form)
+                const payload = Object.fromEntries(formData.entries())
+
+                try {
+                  const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                  })
+
+                  if (!res.ok) throw new Error('Failed to send contact form')
+
+                  setStatus('success')
+                  form.reset()
+                } catch {
+                  setStatus('error')
+                }
               }}
             >
               <div className="contact-form-row">
@@ -83,9 +104,19 @@ export function ContactPage() {
               </label>
 
               <div className="contact-form-action">
-                <button type="submit">入力内容を確認する</button>
+                <button type="submit" disabled={status === 'sending'}>
+                  {status === 'sending' ? '送信中...' : '入力内容を送信する'}
+                </button>
                 <span aria-hidden />
               </div>
+              {status === 'success' && (
+                <p className="text-center text-sm font-bold text-navy-800">{dict.contact.success}</p>
+              )}
+              {status === 'error' && (
+                <p className="text-center text-sm font-bold text-coral-600">
+                  送信に失敗しました。時間をおいて再度お試しください。
+                </p>
+              )}
             </form>
           </div>
 

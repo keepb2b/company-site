@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useI18n } from '../../i18n'
 
 export function FixedContactCTA() {
@@ -10,7 +10,7 @@ export function FixedContactCTA() {
       aria-label={dict.common.freeConsultShort}
     >
       <Link
-        to="/contact"
+        href="/contact"
         className="fixed-cta-link flex items-end gap-2 rounded-2xl bg-sand-50/95 p-2 pr-3 shadow-[0_8px_32px_rgba(30,51,71,0.15)] ring-1 ring-navy-900/8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(196,92,72,0.2)] hover:ring-coral-500/40"
       >
         <div className="relative h-[72px] w-[56px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-sand-100 to-sand-200 md:h-[80px] md:w-[62px]">
@@ -21,6 +21,7 @@ export function FixedContactCTA() {
             width={62}
             height={80}
             loading="lazy"
+            suppressHydrationWarning
           />
         </div>
         <div className="pb-1.5 text-left">

@@ -58,6 +58,7 @@ export function ChatworkPage() {
                     src="https://ui-avatars.com/api/?name=John+Doe&background=c45c48&color=fff&size=128&bold=true"
                     alt="Staff"
                     className="h-20 w-20 rounded-full object-cover shadow-md ring-4 ring-white"
+                    suppressHydrationWarning
                   />
                   <div className="absolute inset-0 rounded-full ring-4 ring-coral-500/30" />
                 </div>

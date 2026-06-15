@@ -40,8 +40,8 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
 function MarqueeTrack({ items, ariaHidden }: { items: TestimonialItem[]; ariaHidden?: boolean }) {
   return (
     <div className="testimonials-track flex shrink-0 items-stretch gap-5 pr-5 md:gap-6 md:pr-6" aria-hidden={ariaHidden}>
-      {items.map((item) => (
-        <TestimonialCard key={`${ariaHidden ? 'dup-' : ''}${item.id}`} item={item} />
+      {items.map((item, index) => (
+        <TestimonialCard key={`${ariaHidden ? 'dup-' : ''}${item.id}-${index}`} item={item} />
       ))}
     </div>
   )

@@ -77,6 +77,7 @@ export function SiteLoader({ ready, onComplete }: Props) {
             width={360}
             height={78}
             decoding="async"
+            suppressHydrationWarning
           />
         </span>
         <div className="site-loader-bar" aria-hidden>

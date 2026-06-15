@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { useI18n } from '../../i18n'
 
@@ -22,13 +22,13 @@ export function CTASection() {
         </div>
 
         <div className="footer-consult-actions">
-          <Link to="/contact" className="footer-consult-button">
+          <Link href="/contact" className="footer-consult-button">
             <span className="footer-consult-button-icon" aria-hidden>
               ✉
             </span>
             {dict.common.freeConsult}
           </Link>
-          <Link to="/chatwork" className="footer-consult-button">
+          <Link href="/chatwork" className="footer-consult-button">
             <span className="footer-consult-chatmark" aria-hidden>
               ●●●
             </span>

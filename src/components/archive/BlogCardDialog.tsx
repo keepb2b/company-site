@@ -38,7 +38,12 @@ export function BlogCardDialog({ post, onClose }: Props) {
     >
       <article className="flex max-h-[calc(100dvh-1rem)] flex-col overflow-y-auto bg-white md:grid md:max-h-[min(760px,calc(100dvh-2rem))] md:grid-cols-[0.95fr_1.05fr] md:overflow-hidden">
         <div className="relative h-[min(42dvh,300px)] min-h-[190px] shrink-0 overflow-hidden bg-navy-950 md:h-auto md:min-h-full">
-          <img src={post.image} alt={post.title} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={post.image}
+            alt={post.title}
+            className="absolute inset-0 h-full w-full object-cover"
+            suppressHydrationWarning
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-transparent md:bg-gradient-to-r md:from-navy-950/45 md:via-transparent md:to-transparent" aria-hidden />
           <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-white/90 px-3 py-1 text-xs font-bold text-navy-950 shadow-sm backdrop-blur">
             {post.serviceNumber}

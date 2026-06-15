@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { navRoutes } from '../../data/navigation'
 import { useI18n } from '../../i18n'
 import { Button } from '../ui/Button'
 import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 
-const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+const navLinkClass = (isActive: boolean) =>
   `shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[11px] font-medium leading-none transition-colors 2xl:px-3 2xl:text-xs ${
     isActive
       ? 'bg-white text-coral-500 shadow-sm'
@@ -14,12 +15,13 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export function GlobalHeader() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
   const { dict } = useI18n()
 
   return (
     <header className="site-header fixed top-0 right-0 left-0 isolate z-[60] border-b border-header-border bg-header-bg text-navy-900 shadow-[0_1px_0_rgba(255,255,255,0.6)_inset] md:bg-header-bg/95 md:backdrop-blur-md">
       <div className="site-header__inner mx-auto grid h-14 w-full min-w-0 max-w-[100rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-1.5 sm:gap-3 md:h-[4.25rem] 2xl:grid-cols-[auto_minmax(0,1fr)_auto]">
-        <Link to="/" className="header-logo-link flex min-w-0 items-center 2xl:col-start-1" aria-label="日本システムズ">
+        <Link href="/" className="header-logo-link flex min-w-0 items-center 2xl:col-start-1" aria-label="日本システムズ">
           <span className="header-logo-frame">
             <img
               src="/images/nippon-systems-logo.png"
@@ -27,6 +29,7 @@ export function GlobalHeader() {
               className="header-logo-img h-7 w-auto max-w-[88px] object-contain object-left sm:h-9 sm:max-w-[148px] 2xl:h-10 2xl:max-w-[190px]"
               width={190}
               height={40}
+              suppressHydrationWarning
             />
           </span>
         </Link>
@@ -36,9 +39,9 @@ export function GlobalHeader() {
           aria-label="Main navigation"
         >
           {navRoutes.map((item) => (
-            <NavLink key={item.path} to={item.path} className={navLinkClass}>
+            <Link key={item.path} href={item.path} className={navLinkClass(pathname === item.path)}>
               {dict.nav[item.key]}
-            </NavLink>
+            </Link>
           ))}
         </nav>
 
@@ -61,7 +64,7 @@ export function GlobalHeader() {
               </svg>
             </a>
             <Link
-              to="/chatwork"
+              href="/chatwork"
               className="shrink-0 rounded-full p-2 text-header-muted hover:bg-white/80 hover:text-navy-900"
               aria-label="ChatWork"
             >
@@ -94,13 +97,13 @@ export function GlobalHeader() {
           <ul className="space-y-1">
             {navRoutes.map((item) => (
               <li key={item.path}>
-                <NavLink
-                  to={item.path}
+                <Link
+                  href={item.path}
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-navy-800 hover:bg-white/80"
                 >
                   {dict.nav[item.key]}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useI18n } from '../../i18n'
 import type { Dictionary } from '../../i18n/types'
 
@@ -22,6 +22,7 @@ export function NumberedServiceBlock({ number, title, description, tags, reverse
                 alt={title}
                 className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-105 md:p-8"
                 loading="lazy"
+                suppressHydrationWarning
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center font-display text-5xl font-bold text-navy-900/10">
@@ -46,7 +47,7 @@ export function NumberedServiceBlock({ number, title, description, tags, reverse
           ))}
         </ul>
 
-        <Link to="/works" className="numbered-service-link">
+        <Link href="/works" className="numbered-service-link">
           {dict.common.relatedWorks}
           <span aria-hidden />
         </Link>

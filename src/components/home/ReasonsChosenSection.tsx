@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ReasonIcon } from './ReasonIcon'
 import { useI18n } from '../../i18n'
 import type { Dictionary } from '../../i18n/types'
@@ -55,7 +55,7 @@ export function ReasonsChosenSection() {
         </div>
 
         <div className="reason-choice-action">
-          <Link to="/strengths" className="reason-choice-link">
+          <Link href="/strengths" className="reason-choice-link">
             {section.ctaLabel}
           </Link>
           <span aria-hidden />

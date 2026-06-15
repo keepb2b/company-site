@@ -23,6 +23,7 @@ export function BlogCard({ title, date, category, image, onClick }: Props) {
                 alt={title}
                 className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
+                suppressHydrationWarning
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/35 via-transparent to-transparent" aria-hidden />
               <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-white/90 px-3 py-1 text-xs font-semibold text-navy-900 shadow-sm backdrop-blur">

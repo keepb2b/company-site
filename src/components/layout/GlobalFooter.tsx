@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { footerRoutes } from '../../data/navigation'
 import { useI18n } from '../../i18n'
+
+const FOOTER_YEAR = '2026'
 
 export function GlobalFooter() {
   const { dict } = useI18n()
@@ -27,8 +29,8 @@ export function GlobalFooter() {
       <div className="site-footer-inner">
         <div className="site-footer-main">
           <div className="site-footer-brand">
-            <Link to="/" className="site-footer-logo" aria-label="Nippon Systems">
-              <img src="/images/nippon-systems-logo.png" alt="Nippon Systems" />
+            <Link href="/" className="site-footer-logo" aria-label="Nippon Systems">
+              <img src="/images/nippon-systems-logo.png" alt="Nippon Systems" suppressHydrationWarning />
             </Link>
 
             <address className="site-footer-address">
@@ -40,11 +42,11 @@ export function GlobalFooter() {
             </address>
 
             <div className="site-footer-promos">
-              <Link to="/services" className="site-footer-promo site-footer-promo--services">
+              <Link href="/services" className="site-footer-promo site-footer-promo--services">
                 <span>Web / EC / CMS</span>
                 <strong>{dict.nav.services}</strong>
               </Link>
-              <Link to="/staff" className="site-footer-promo site-footer-promo--staff">
+              <Link href="/staff" className="site-footer-promo site-footer-promo--staff">
                 <span>Join our team</span>
                 <strong>{dict.nav.staff}</strong>
               </Link>
@@ -56,20 +58,20 @@ export function GlobalFooter() {
             <ul>
               {sitemap.map((item) => (
                 <li key={item.path}>
-                  <Link to={item.path}>
+                  <Link href={item.path}>
                     <span aria-hidden>›</span>
                     {dict.nav[item.key]}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/contact">
+                <Link href="/contact">
                   <span aria-hidden>›</span>
                   {dict.common.contact}
                 </Link>
               </li>
               <li>
-                <Link to="/chatwork">
+                <Link href="/chatwork">
                   <span aria-hidden>›</span>
                   {dict.common.chatwork}
                 </Link>
@@ -80,7 +82,7 @@ export function GlobalFooter() {
 
         <div className="site-footer-notes">
           <p>{dict.footer.seo}</p>
-          <p>{dict.footer.copyright.replace('{year}', String(new Date().getFullYear()))}</p>
+          <p>{dict.footer.copyright.replace('{year}', FOOTER_YEAR)}</p>
         </div>
       </div>
     </footer>

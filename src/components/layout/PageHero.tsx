@@ -43,6 +43,7 @@ function PageHeroPhoto({ src }: { src: string }) {
         height={PHOTO_HEIGHT}
         decoding="async"
         aria-hidden
+        suppressHydrationWarning
       />
       <img
         src={src}
@@ -52,6 +53,7 @@ function PageHeroPhoto({ src }: { src: string }) {
         height={PHOTO_HEIGHT}
         decoding="async"
         aria-hidden
+        suppressHydrationWarning
       />
       <div className="page-hero-photo-feather" aria-hidden />
     </div>

@@ -4,27 +4,26 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "start": "node scripts/start-preview.mjs"
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "node .next/standalone/server.js"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
     "gsap": "^3.15.0",
+    "next": "^16.2.9",
+    "nodemailer": "^8.0.11",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1",
     "three": "^0.184.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.0",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.184.1",
-    "@vitejs/plugin-react": "^6.0.2",
     "playwright": "^1.60.0",
     "tailwindcss": "^4.3.0",
-    "typescript": "~5.8.3",
-    "vite": "^8.0.12"
+    "typescript": "~5.8.3"
   }
 }

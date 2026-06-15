@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 type ButtonProps = {
   children: React.ReactNode
@@ -48,7 +48,7 @@ export function Button({
 
   if (to) {
     return (
-      <Link to={to} className={`group ${classes}`}>
+      <Link href={to} className={`group ${classes}`}>
         {content}
       </Link>
     )

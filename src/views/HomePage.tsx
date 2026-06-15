@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { achievementValues } from '../data/navigation'
 import { Button } from '../components/ui/Button'
 import { SectionTitle } from '../components/ui/SectionTitle'
@@ -101,14 +101,14 @@ export function HomePage() {
             ))}
           </div>
           <div className="achievement-cta-row">
-            <Link to="/contact" className="achievement-cta achievement-cta-primary">
+            <Link href="/contact" className="achievement-cta achievement-cta-primary">
               <span className="achievement-cta-icon" aria-hidden>✉</span>
               <span>
                 <span className="achievement-cta-main">{dict.common.freeConsultShort}</span>
                 <span className="achievement-cta-sub">エンジニア経験者がお受けします!</span>
               </span>
             </Link>
-            <Link to="/fee" className="achievement-cta achievement-cta-secondary">
+            <Link href="/fee" className="achievement-cta achievement-cta-secondary">
               <span className="achievement-cta-icon" aria-hidden>↓</span>
               <span>
                 <span className="achievement-cta-main">{dict.common.documentRequest}</span>
@@ -145,7 +145,7 @@ export function HomePage() {
               return (
                 <Link
                   key={s.number}
-                  to="/services"
+                  href="/services"
                   className="scroll-reveal service-card-mobile absolute left-1/2 top-1/2 flex h-56 w-72 -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6 shadow-sm transition-all duration-1000 ease-in-out md:h-60 md:w-80"
                   style={{
                     transform: `translate(-50%, -50%) rotate(${rotation}deg) translateX(${(positionIndex - 2.5) * 80}px) translateY(${(positionIndex - 2.5) * 30}px) scale(var(--card-scale, 1.5))`,
@@ -270,6 +270,7 @@ export function HomePage() {
                 alt={dict.home.company.ja}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 loading="lazy"
+                suppressHydrationWarning
               />
             </div>
             <div>

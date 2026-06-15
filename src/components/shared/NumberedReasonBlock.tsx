@@ -18,6 +18,7 @@ export function NumberedReasonBlock({ number, title, description, imageAlt, reve
             alt={imageAlt}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             loading="lazy"
+            suppressHydrationWarning
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center" aria-hidden>

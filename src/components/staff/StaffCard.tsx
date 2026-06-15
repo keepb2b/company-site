@@ -6,7 +6,12 @@ export function StaffCard({ name, role, specialty, image }: StaffItem) {
   return (
     <article className="scroll-reveal overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-sm transition-shadow hover:shadow-md">
       {image ? (
-        <img src={image} alt={name} className="aspect-square w-full object-cover opacity-90" />
+        <img
+          src={image}
+          alt={name}
+          className="aspect-square w-full object-cover opacity-90"
+          suppressHydrationWarning
+        />
       ) : (
         <div className="aspect-square bg-gradient-to-br from-navy-800 to-navy-950" />
       )}
