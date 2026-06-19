@@ -1,5 +1,9 @@
+import { appendFile, mkdir } from 'node:fs/promises'
+import { dirname, join } from 'node:path'
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+
+export const runtime = 'nodejs'
 
 type ContactPayload = {
   company?: unknown
@@ -9,8 +13,44 @@ type ContactPayload = {
   message?: unknown
 }
 
+type ContactSubmission = {
+  company: string
+  name: string
+  email: string
+  phone: string
+  message: string
+}
+
 function readText(value: unknown) {
   return typeof value === 'string' ? value.trim() : ''
+}
+
+function hasMailConfig(config: {
+  host?: string
+  user?: string
+  pass?: string
+  to?: string
+  from?: string
+}) {
+  return Boolean(config.host && config.user && config.pass && config.to && config.from)
+}
+
+async function saveSubmission(submission: ContactSubmission) {
+  const filePath = process.env.CONTACT_FALLBACK_FILE ?? join(process.cwd(), 'contact-submissions.jsonl')
+  const record = {
+    createdAt: new Date().toISOString(),
+    ...submission,
+  }
+
+  try {
+    await mkdir(dirname(filePath), { recursive: true })
+    await appendFile(filePath, `${JSON.stringify(record)}\n`, 'utf8')
+    return 'file'
+  } catch (error) {
+    console.error('Failed to write contact submission fallback file', error)
+    console.info('Contact submission fallback', record)
+    return 'console'
+  }
 }
 
 export async function POST(request: Request) {
@@ -22,13 +62,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid JSON payload' }, { status: 400 })
   }
 
-  const company = readText(payload.company)
-  const name = readText(payload.name)
-  const email = readText(payload.email)
-  const phone = readText(payload.phone)
-  const message = readText(payload.message)
+  const submission: ContactSubmission = {
+    company: readText(payload.company),
+    name: readText(payload.name),
+    email: readText(payload.email),
+    phone: readText(payload.phone),
+    message: readText(payload.message),
+  }
 
-  if (!company || !name || !email || !phone || !message) {
+  if (
+    !submission.company ||
+    !submission.name ||
+    !submission.email ||
+    !submission.phone ||
+    !submission.message
+  ) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -39,34 +87,41 @@ export async function POST(request: Request) {
   const to = process.env.CONTACT_TO_EMAIL
   const from = process.env.CONTACT_FROM_EMAIL ?? user
 
-  if (!host || !user || !pass || !to || !from) {
-    return NextResponse.json({ error: 'Mail server is not configured' }, { status: 500 })
+  try {
+    if (!hasMailConfig({ host, user, pass, to, from })) {
+      const delivery = await saveSubmission(submission)
+      return NextResponse.json({ ok: true, delivery })
+    }
+
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass },
+    })
+
+    await transporter.sendMail({
+      from,
+      to,
+      replyTo: submission.email,
+      subject: `Web contact: ${submission.company} ${submission.name}`,
+      text: [
+        'A contact form submission was received.',
+        '',
+        `Company: ${submission.company}`,
+        `Name: ${submission.name}`,
+        `Email: ${submission.email}`,
+        `Phone: ${submission.phone}`,
+        '',
+        'Message:',
+        submission.message,
+      ].join('\n'),
+    })
+
+    return NextResponse.json({ ok: true, delivery: 'mail' })
+  } catch (error) {
+    console.error('Contact submission failed', error)
+    const delivery = await saveSubmission(submission)
+    return NextResponse.json({ ok: true, delivery, mailError: true })
   }
-
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  })
-
-  await transporter.sendMail({
-    from,
-    to,
-    replyTo: email,
-    subject: `Web問い合わせ: ${company} ${name}`,
-    text: [
-      'Webサイトからお問い合わせがありました。',
-      '',
-      `会社名: ${company}`,
-      `担当者名: ${name}`,
-      `メール: ${email}`,
-      `電話番号: ${phone}`,
-      '',
-      'お問い合わせ内容:',
-      message,
-    ].join('\n'),
-  })
-
-  return NextResponse.json({ ok: true })
 }

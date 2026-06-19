@@ -4,3 +4,4 @@ dist
 out
 *.local
 .DS_Store
+contact-submissions.jsonl

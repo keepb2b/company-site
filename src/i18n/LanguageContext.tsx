@@ -16,18 +16,16 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
-function readStoredLocale(): Locale {
-  if (typeof window === 'undefined') return 'ja'
-  const stored = localStorage.getItem(STORAGE_KEY)
-  return stored === 'en' ? 'en' : 'ja'
-}
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(readStoredLocale)
+  const [locale, setLocaleState] = useState<Locale>('ja')
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next)
-    localStorage.setItem(STORAGE_KEY, next)
+    try {
+      localStorage.setItem(STORAGE_KEY, next)
+    } catch {
+      // localStorage unavailable
+    }
   }, [])
 
   const toggleLocale = useCallback(() => {
@@ -40,6 +38,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const meta = document.querySelector('meta[name="description"]')
     if (meta) meta.setAttribute('content', dictionaries[locale].meta.siteDescription)
   }, [locale])
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored === 'en') setLocaleState('en')
+    } catch {
+      // localStorage unavailable
+    }
+  }, [])
 
   const value = useMemo(
     () => ({

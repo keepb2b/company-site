@@ -50,9 +50,14 @@ function waitForWindowLoad(): Promise<void> {
 
 export function LoadingProvider({ children }: { children: React.ReactNode }) {
   const reduced = useReducedMotion()
-  const skipLoader = reduced || hasSeenIntroLoader()
+  const [introSeen, setIntroSeen] = useState(false)
+  const skipLoader = reduced || introSeen
   const [ready, setReady] = useState(skipLoader)
   const [visible, setVisible] = useState(!skipLoader)
+
+  useEffect(() => {
+    setIntroSeen(hasSeenIntroLoader())
+  }, [])
 
   useEffect(() => {
     if (skipLoader) {
