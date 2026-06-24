@@ -9,7 +9,7 @@ function WarningIcon() {
   return (
     <span data-concern-icon className="flex h-5 w-5 shrink-0 items-center justify-center md:h-6 md:w-6" aria-hidden>
       <svg viewBox="0 0 24 24" className="h-5 w-5 md:h-6 md:w-6">
-        <path d="M12 3L2 21h20L12 3z" fill="#c45c48" />
+        <path d="M12 3L2 21h20L12 3z" fill="var(--color-coral-500)" />
         <path d="M12 9v5M12 16v1" stroke="white" strokeWidth="2" strokeLinecap="round" />
       </svg>
     </span>
@@ -32,7 +32,7 @@ function ConcernCard({ text, side, index }: ConcernCardProps) {
           side === 'left' ? 'flex-row-reverse text-right' : 'flex-row text-left'
         }`}
       >
-        <p className="concern-card-body rounded-sm bg-white px-2 py-1.5 text-[11px] font-medium leading-snug text-navy-900 shadow-[0_2px_12px_rgba(15,39,68,0.08)] sm:text-xs md:whitespace-nowrap md:px-3 md:py-2 md:text-[15px]">
+        <p className="concern-card-body rounded-sm bg-white px-2 py-1.5 text-[11px] font-medium leading-snug text-navy-900 shadow-[0_2px_12px_rgba(16,34,51,0.08)] sm:text-xs md:whitespace-nowrap md:px-3 md:py-2 md:text-[15px]">
           {text}
         </p>
         <WarningIcon />
@@ -64,19 +64,19 @@ function CenterHub({ className = '' }: { className?: string }) {
 
       <div className="relative z-10 grid grid-cols-2 gap-1.5 p-1.5 sm:gap-2 sm:p-2 md:gap-4 md:p-4">
         <HubIcon label="Code" floatClass="hub-icon-float">
-          <rect x="4" y="6" width="16" height="12" rx="2" fill="#2a4460" />
-          <path d="M8 11h8M8 14h5" stroke="#9ec4d4" strokeWidth="1.2" strokeLinecap="round" />
+          <rect x="4" y="6" width="16" height="12" rx="2" fill="var(--color-navy-800)" />
+          <path d="M8 11h8M8 14h5" stroke="var(--color-aizome-300)" strokeWidth="1.2" strokeLinecap="round" />
         </HubIcon>
         <HubIcon label="Gear" floatClass="hub-icon-float hub-icon-float--delay-1" spin>
-          <circle cx="12" cy="12" r="6" fill="#5a8fa8" opacity="0.9" />
-          <circle cx="12" cy="12" r="2.5" fill="#e8f4f8" />
+          <circle cx="12" cy="12" r="6" fill="var(--color-aizome-500)" opacity="0.9" />
+          <circle cx="12" cy="12" r="2.5" fill="var(--color-sand-50)" />
         </HubIcon>
         <HubIcon label="Tags" floatClass="hub-icon-float hub-icon-float--delay-2">
-          <path d="M8 8l4-2 4 2v8l-4 2-4-2V8z" fill="#6b98ad" />
+          <path d="M8 8l4-2 4 2v8l-4 2-4-2V8z" fill="var(--color-aizome-400)" />
           <path d="M10 10h4M10 13h3" stroke="white" strokeWidth="1" strokeLinecap="round" />
         </HubIcon>
         <HubIcon label="Cloud" floatClass="hub-icon-float hub-icon-float--delay-3">
-          <path d="M7 14a3 3 0 013-3 3.5 3.5 0 017 0 3 3 0 010 6H8a3 3 0 01-1-6z" fill="#457a94" />
+          <path d="M7 14a3 3 0 013-3 3.5 3.5 0 017 0 3 3 0 010 6H8a3 3 0 01-1-6z" fill="var(--color-aizome-600)" />
           <path d="M12 15v3M10.5 17.5L12 19l1.5-1.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
         </HubIcon>
       </div>

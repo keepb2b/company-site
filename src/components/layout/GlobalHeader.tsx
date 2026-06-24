@@ -9,7 +9,7 @@ import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 const navLinkClass = (isActive: boolean) =>
   `shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[11px] font-medium leading-none transition-colors 2xl:px-3 2xl:text-xs ${
     isActive
-      ? 'bg-white text-coral-500 shadow-sm'
+      ? 'bg-white text-navy-900 shadow-sm'
       : 'text-header-muted hover:bg-white/70 hover:text-navy-900'
   }`
 
@@ -118,7 +118,7 @@ export function GlobalHeader() {
             <Button
               to="/contact"
               variant="secondary"
-              className="w-full justify-center !border-header-border !bg-white/70 !text-navy-800 hover:!bg-navy-900 hover:!text-white sm:flex-1"
+              className="w-full justify-center !border-header-border !bg-white/70 !text-navy-800 hover:!bg-navy-900 hover:!text-brand-ink sm:flex-1"
             >
               {dict.common.contact}
             </Button>

@@ -10,7 +10,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
     <nav aria-label="Breadcrumb" className="text-sm text-navy-700/70">
       <ol className="flex flex-wrap items-center gap-2">
         <li>
-          <Link href="/" className="transition-colors hover:text-coral-500">
+          <Link href="/" className="transition-colors hover:text-navy-900">
             {dict.common.breadcrumbHome}
           </Link>
         </li>
@@ -18,7 +18,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
           <li key={i} className="flex items-center gap-2">
             <span aria-hidden>/</span>
             {item.path ? (
-              <Link href={item.path} className="transition-colors hover:text-coral-500">
+              <Link href={item.path} className="transition-colors hover:text-navy-900">
                 {item.label}
               </Link>
             ) : (

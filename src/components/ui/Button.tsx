@@ -12,11 +12,11 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    'btn-sweep bg-coral-500 text-white hover:bg-coral-400 hover:-translate-y-0.5 shadow-lg shadow-coral-500/25',
+    'btn-sweep bg-[linear-gradient(135deg,var(--color-button-400)_0%,var(--color-button-600)_100%)] text-brand-ink hover:brightness-105 hover:-translate-y-0.5 shadow-lg shadow-[rgba(255,139,26,0.28)]',
   secondary:
-    'border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white hover:-translate-y-0.5',
+    'border-2 border-transparent bg-[linear-gradient(135deg,var(--color-button-400)_0%,var(--color-button-600)_100%)] text-brand-ink hover:brightness-105 hover:-translate-y-0.5 shadow-lg shadow-[rgba(255,139,26,0.24)]',
   outline:
-    'border border-navy-700/30 text-navy-800 hover:border-coral-500 hover:text-coral-500',
+    'border border-button-500/45 text-navy-800 hover:border-button-500 hover:bg-button-500/10 hover:text-navy-900',
 }
 
 export function Button({

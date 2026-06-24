@@ -16,7 +16,7 @@ export function StaffCard({ name, role, specialty, image }: StaffItem) {
         <div className="aspect-square bg-gradient-to-br from-navy-800 to-navy-950" />
       )}
       <div className="p-5">
-        <p className="text-xs font-medium text-coral-500">{role}</p>
+        <p className="text-xs font-medium text-navy-700/70">{role}</p>
         <h3 className="mt-1 text-lg font-bold text-navy-900">{name}</h3>
         <p className="mt-2 text-sm text-navy-700/75">{specialty}</p>
       </div>

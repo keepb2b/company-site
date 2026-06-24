@@ -393,7 +393,7 @@ export const ja: Dictionary = {
     name: 'お名前',
     email: 'メールアドレス',
     message: 'ご相談内容',
-    success: 'お問い合わせありがとうございます。（デモ）',
+      success: 'お問い合わせありがとうございます。',
   },
   testimonials: {
     section: { en: 'Voice', ja: 'お客様の声' },
@@ -415,8 +415,8 @@ export const ja: Dictionary = {
         author: 'アパレルブランド B社',
         role: '担当者',
         initials: 'BK',
-        avatarFrom: '#c45c48',
-        avatarTo: '#d97a6a',
+        avatarFrom: '#2f7f96',
+        avatarTo: '#8acaa2',
       },
       {
         id: '3',

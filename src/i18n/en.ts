@@ -320,94 +320,94 @@ export const en: Dictionary = {
     items: [
       {
         id: '001',
-        category: 'tech',
-        question: 'What kind of services do you provide?',
+        category: 'beforeOrder',
+        question: 'What kinds of production or development work can I request?',
         answer:
-          'We provide technical implementation and development support for websites, online stores, CMS platforms, business systems, and AI-powered solutions. Our main services include WordPress, Shopify, EC-CUBE, EC-force, Color Me Shop, Makeshop, MovableType, headless CMS, React/Next.js, web animation, and AI system development.',
+          'We support a wide range of technical implementation work, including WordPress, Shopify, EC-CUBE, EC-force, Color Me Shop, Makeshop, MovableType, headless CMS, React / Next.js, web animation, AI solutions, and business system development. We can help with corporate sites, e-commerce sites, landing pages, CMS builds, existing site improvements, system integrations, and AI-enabled tools.',
       },
       {
         id: '002',
         category: 'beforeOrder',
-        question: 'Can you work as a development partner for agencies?',
+        question: 'Can you work as an external partner for production companies or agencies?',
         answer:
-          'Yes. We can support agencies as a technical coding partner. We handle implementation, customization, system development, CMS setup, e-commerce development, and technical support behind the scenes, allowing agencies to focus on client communication and project management.',
+          'Yes. We can support production companies and advertising agencies as a technical partner behind the scenes. We can handle coding, CMS builds, e-commerce implementation, system development, and maintenance while your company manages client communication. We can also take responsibility only for the development portion of a project.',
       },
       {
         id: '003',
-        category: 'tech',
-        question: 'Do you support Shopify development?',
+        category: 'beforeOrder',
+        question: 'Can I consult with you even if the requirements are not fixed yet?',
         answer:
-          'Yes. We support Shopify store setup, theme customization, section development, product page optimization, app integration, CSV import/export support, and operational improvements for online stores.',
+          'Yes. You can consult with us from an early stage, such as when you are unsure what to build, want to improve an existing site, or want to make e-commerce operations more efficient. We organize your goals and challenges, then propose the necessary features, suitable technologies, and development scope.',
       },
       {
         id: '004',
-        category: 'tech',
-        question: 'Can you build Japanese e-commerce sites?',
+        category: 'beforeOrder',
+        question: 'Can I request small fixes or partial work?',
         answer:
-          'Yes. We support Japanese e-commerce platforms such as EC-CUBE, EC-force, Color Me Shop, Makeshop, and Shopify. We can assist with store design, product registration flow, payment/shipping settings, CMS integration, and custom development.',
+          'Yes. We can support partial work such as layout fixes for existing sites, smartphone optimization, page additions, form improvements, Shopify customization, and WordPress bug fixes.',
       },
       {
         id: '005',
-        category: 'tech',
-        question: 'Do you support WordPress websites?',
+        category: 'beforeOrder',
+        question: 'Can I request work even if I do not have design data?',
         answer:
-          'Yes. We build and customize WordPress websites, including corporate sites, landing pages, media sites, blogs, service pages, and CMS-based websites. We also support theme customization, plugin setup, responsive design, and performance improvement.',
+          'Yes. Even without design data, we can propose a structure and layout based on reference sites, your business details, goals, and target users. If you already have design data in Figma, XD, Photoshop, or another format, we can also implement it accurately.',
       },
       {
         id: '006',
-        category: 'tech',
-        question: 'Can you develop modern front-end websites?',
+        category: 'progress',
+        question: 'What is the general production or development process?',
         answer:
-          'Yes. We develop modern front-end websites using React, Next.js, headless CMS, and web animation technologies. We can create fast, scalable, and visually engaging websites suitable for corporate branding, landing pages, and digital services.',
+          'In general, projects proceed through consultation, requirement organization, estimate, design, development or implementation, review and revisions, and delivery. We adjust the exact process according to the project size and content so the work can move forward efficiently.',
       },
       {
         id: '007',
-        category: 'tech',
-        question: 'Do you provide AI-powered solutions?',
+        category: 'progress',
+        question: 'How do you share project progress?',
         answer:
-          'Yes. We develop AI-powered solutions such as AI chatbots, workflow automation, content generation tools, internal business support systems, and AI integration with existing websites or platforms.',
+          'Depending on the work, we share progress through chat, documents, screen sharing, and test environments. We aim to keep the process transparent so you can see what has been completed, what is currently being worked on, and what needs to be reviewed next.',
       },
       {
         id: '008',
-        category: 'tech',
-        question: 'Can you handle both design and coding?',
+        category: 'progress',
+        question: 'How do you manage quality?',
         answer:
-          'Yes. We can support both design implementation and coding. If you already have a design file, we can accurately convert it into a responsive website. If you need improvement suggestions, we can also propose better UI, layout, animation, and user flow ideas.',
+          'After implementation, we check display quality, smartphone responsiveness, browser compatibility, links, forms, and basic behavior. For e-commerce sites and systems, we also carefully review important operational areas such as product display, carts, admin screens, data entry, and integrations.',
       },
       {
         id: '009',
-        category: 'tech',
-        question: 'Do you support responsive design?',
+        category: 'progress',
+        question: 'Can you support smartphones?',
         answer:
-          'Yes. All websites and systems can be developed with responsive design for desktop, tablet, and smartphone users. We focus on usability, readability, loading speed, and conversion-friendly layouts.',
+          'Yes. We provide responsive implementation that is easy to view and use on PCs, tablets, and smartphones. For landing pages and e-commerce sites in particular, we focus on readability, button usability, and the path to purchase or inquiry on mobile devices.',
       },
       {
         id: '010',
-        category: 'tech',
-        question: 'Can you customize existing websites or systems?',
+        category: 'progress',
+        question: 'Do you provide revisions or support after delivery?',
         answer:
-          'Yes. We can improve, repair, customize, or extend existing websites and systems. This includes layout fixes, feature additions, CMS improvements, e-commerce adjustments, animation updates, and system integration.',
+          'Yes. Depending on the project, we can support post-delivery revisions and assistance. This may include checking minor display issues or initial bugs, explaining how to operate the site, and discussing future improvements so you can continue operating with confidence.',
       },
       {
         id: '011',
-        category: 'progress',
-        question: 'Can you support long-term development?',
+        category: 'tech',
+        question: 'Do you support WordPress builds and customization?',
         answer:
-          'Yes. We can work as a long-term technical partner for continuous website updates, system improvements, e-commerce operation support, maintenance, and new feature development.',
+          'Yes. We support WordPress builds for corporate sites, media sites, landing pages, blogs, and service sites. We can also help with theme customization, plugin settings, custom posts, admin screen improvements, and performance optimization.',
       },
       {
         id: '012',
-        category: 'beforeOrder',
-        question: 'What makes your company different?',
+        category: 'tech',
+        question: 'Do you support Shopify builds and customization?',
         answer:
-          'We focus not only on coding, but also on business results. Our goal is to build reliable digital systems that improve efficiency, increase sales, and help businesses grow faster. We provide practical implementation, stable development, and flexible technical support for agencies and business owners.',
+          'Yes. We support Shopify store builds, theme customization, product page improvements, section additions, app integration, CSV support, and operational improvements. We implement with consideration for easier e-commerce management and updates.',
       },
       {
         id: '013',
         category: 'tech',
-        question: 'Can you handle Japanese e-commerce platforms?',
+        question: 'Can you support Japanese e-commerce platforms such as EC-CUBE and EC-force?',
         answer:
-          'Yes. We support Japanese e-commerce platforms such as EC-CUBE, EC-force, Color Me Shop, and Makeshop. We can assist with product management, payment/shipping settings, design adjustments, customization, and external integrations.',
+          'Yes. We support e-commerce platforms commonly used in Japan, including EC-CUBE, EC-force, Color Me Shop, and Makeshop. We can help with product management, payment and shipping settings, design adjustments, customization, and external integrations.',
       },
       {
         id: '014',
@@ -470,7 +470,7 @@ export const en: Dictionary = {
         category: 'fee',
         question: 'Do you offer maintenance and operation support plans?',
         answer:
-          'Yes. We can provide ongoing maintenance and operation support. Based on your needs — such as site updates, minor fixes, bug fixes, CMS management, e-commerce operation support, and feature improvements — we can propose monthly plans or spot support.',
+          'Yes. We can provide ongoing maintenance and operation support. Based on your needs, such as site updates, minor fixes, bug fixes, CMS management, e-commerce operation support, and feature improvements, we can propose monthly plans or spot support.',
       },
     ],
   },
@@ -535,7 +535,7 @@ export const en: Dictionary = {
     name: 'Your Name',
     email: 'Email Address',
     message: 'Message',
-    success: 'Thank you for your inquiry. (Demo)',
+      success: 'Thank you for your inquiry.',
   },
   testimonials: {
     section: { en: 'Voice', ja: 'Client Testimonials' },
@@ -557,8 +557,8 @@ export const en: Dictionary = {
         author: 'Apparel Brand B',
         role: 'Project Owner',
         initials: 'BK',
-        avatarFrom: '#c45c48',
-        avatarTo: '#d97a6a',
+        avatarFrom: '#2f7f96',
+        avatarTo: '#8acaa2',
       },
       {
         id: '3',

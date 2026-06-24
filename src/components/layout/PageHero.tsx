@@ -67,7 +67,7 @@ export function PageHero({ en, ja, breadcrumbs, variant = 'default' }: PageHeroP
     return (
       <section className="relative overflow-hidden border-b border-sand-200 section-band-washi-deep pt-28 pb-12 text-navy-900 md:pt-32 md:pb-16">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-coral-500">{en}</p>
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-navy-700/70">{en}</p>
           <h1 className="mt-3 font-display text-3xl font-bold text-navy-900 md:text-5xl">{ja}</h1>
           <div className="mt-6">
             <Breadcrumb items={breadcrumbs} />
@@ -81,7 +81,7 @@ export function PageHero({ en, ja, breadcrumbs, variant = 'default' }: PageHeroP
     <section className="page-hero-photo-bg relative overflow-hidden border-b border-sand-200 pt-24 pb-4 text-navy-900 md:pb-5 md:pt-28">
       <div className="page-hero-layout mx-auto max-w-6xl px-4 md:px-6">
         <div className="page-hero-body">
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-coral-500">{en}</p>
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-navy-700/70">{en}</p>
           <h1 className="mt-2 font-display text-2xl font-bold text-navy-900 sm:text-3xl md:text-3xl lg:text-4xl">{ja}</h1>
           <div className="mt-3 md:mt-4">
             <Breadcrumb items={breadcrumbs} />

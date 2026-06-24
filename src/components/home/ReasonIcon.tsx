@@ -1,6 +1,6 @@
 import type { ReasonIcon as ReasonIconType } from '../../data/reasons'
 
-const stroke = '#5a8fa8'
+const stroke = 'var(--color-aizome-500)'
 const strokeW = 1.6
 
 export function ReasonIcon({ type }: { type: ReasonIconType }) {

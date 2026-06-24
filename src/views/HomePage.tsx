@@ -13,6 +13,7 @@ import { ReasonsChosenSection } from '../components/home/ReasonsChosenSection'
 import { TestimonialsBand } from '../components/home/TestimonialsBand'
 import { PricingBlock } from '../components/shared/PricingBlock'
 import { WorkCaseStudyCard } from '../components/archive/WorkCaseStudyCard'
+import { serviceImages } from '../data/services'
 import { flattenWorkCases, getWorkCaseGroups } from '../data/workCases'
 import { getBlogPosts } from '../data/blogPosts'
 import { BlogCard } from '../components/archive/BlogCard'
@@ -23,6 +24,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useI18n } from '../i18n'
 
 export function HomePage() {
+  const servicePreviewCount = 8
   const heroRef = useRef<HTMLElement>(null)
   const { dict, locale } = useI18n()
   useHeroAnimation(heroRef)
@@ -33,7 +35,7 @@ export function HomePage() {
   const companyRef = useScrollReveal<HTMLElement>()
   const numbersRef = useScrollReveal<HTMLElement>({ staggerMs: 100 })
   
-  const [cardOrder, setCardOrder] = useState([0, 1, 2, 3, 4, 5])
+  const [cardOrder, setCardOrder] = useState(() => Array.from({ length: servicePreviewCount }, (_, index) => index))
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,7 +59,7 @@ export function HomePage() {
         <MovingLinesBg />
 
         <div className="relative mx-auto flex max-w-6xl flex-col px-4 pb-20 md:min-h-[calc(100vh-6rem)] md:justify-center md:px-6">
-          <p className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-coral-400" data-hero="line">
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-white/75" data-hero="line">
             {dict.home.heroEyebrow}
           </p>
           <h1
@@ -80,7 +82,7 @@ export function HomePage() {
             <Button to="/contact" variant="primary">
               {dict.common.freeConsult}
             </Button>
-            <Button to="/fee" variant="secondary" className="!border-white/40 !text-white hover:!bg-white hover:!text-navy-900">
+            <Button to="/fee" variant="secondary" className="!text-brand-ink">
               {dict.common.downloadDocs}
             </Button>
           </div>
@@ -137,32 +139,40 @@ export function HomePage() {
           }
         `}</style>
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <SectionTitle en={dict.home.servicesPreview.en} ja={dict.home.servicesPreview.ja} />
+          <div className="relative z-30 mx-auto flex max-w-3xl justify-end pr-3 md:pr-10">
+            <div>
+              <SectionTitle en={dict.home.servicesPreview.en} ja={dict.home.servicesPreview.ja} />
+            </div>
+          </div>
           <div className="relative mx-auto h-[600px] w-full max-w-3xl">
-            {dict.services.items.slice(0, 6).map((s, index) => {
+            {dict.services.items.slice(0, servicePreviewCount).map((s, index) => {
               const positionIndex = cardOrder.indexOf(index)
-              const rotation = positionIndex === 5 ? 0 : (positionIndex - 2.5) * 12
+              const cardCenter = (servicePreviewCount - 1) / 2
+              const rotation = positionIndex === servicePreviewCount - 1 ? 0 : (positionIndex - cardCenter) * 8
               return (
                 <Link
                   key={s.number}
                   href="/services"
-                  className="scroll-reveal service-card-mobile absolute left-1/2 top-1/2 flex h-56 w-72 -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6 shadow-sm transition-all duration-1000 ease-in-out md:h-60 md:w-80"
+                  className="scroll-reveal service-card-mobile absolute left-1/2 top-1/2 flex h-80 w-80 -translate-x-1/2 -translate-y-1/2 flex-col border border-aizome-300/70 bg-white p-5 shadow-[0_18px_45px_rgba(29,52,72,0.12)] ring-1 ring-white/80 transition-all duration-1000 ease-in-out hover:shadow-[0_24px_60px_rgba(29,52,72,0.18)] md:h-96 md:w-96"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateX(${(positionIndex - 2.5) * 80}px) translateY(${(positionIndex - 2.5) * 30}px) scale(var(--card-scale, 1.5))`,
+                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateX(${(positionIndex - cardCenter) * 48}px) translateY(${(positionIndex - cardCenter) * 22}px) scale(var(--card-scale, 1.5))`,
                     zIndex: positionIndex,
-                    border: '2px solid transparent',
-                    background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%) border-box',
+                    backgroundColor: 'white',
                   }}
                   data-cursor-hover
                 >
-                  <div className="relative h-32 w-full shrink-0 overflow-hidden rounded-md bg-gradient-to-br from-navy-100 to-sand-100">
-                    <div className="flex h-full items-center justify-center">
-                      <div className="text-4xl">🖥️</div>
-                    </div>
+                  <div className="relative h-52 w-full shrink-0 overflow-hidden rounded-md bg-gradient-to-br from-sand-50 to-sand-100 md:h-64">
+                    <img
+                      src={serviceImages[index]}
+                      alt={s.title}
+                      className="h-full w-full rounded-md object-contain"
+                      loading="lazy"
+                      suppressHydrationWarning
+                    />
                   </div>
-                  <div className="mt-4 flex min-h-0 flex-1 flex-col items-center justify-center text-center">
-                    <h3 className="line-clamp-2 font-display text-lg font-bold leading-tight text-navy-900 md:text-xl">{s.title}</h3>
-                    <p className="mt-1 text-sm text-coral-500">〈 {s.number} 〉</p>
+                  <div className="mt-4 flex min-h-20 shrink-0 flex-col items-center justify-center text-center md:min-h-24">
+                    <h3 className="font-display text-base font-bold leading-tight text-navy-900 md:text-xl">{s.title}</h3>
+                    <p className="mt-1 text-sm text-navy-700/70">〈 {s.number} 〉</p>
                   </div>
                 </Link>
               )
@@ -176,9 +186,9 @@ export function HomePage() {
 
       <section className="section-band-washi section-band-py relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-aizome-400/10 via-transparent to-coral-500/5" />
+          <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-aizome-400/10 via-transparent to-aizome-500/5" />
           <div className="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-aizome-300/20 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-coral-500/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-aizome-500/10 blur-3xl" />
         </div>
         <div className="mx-auto max-w-6xl px-4 md:px-6 relative">
           <SectionTitle en={dict.home.price.en} ja={dict.home.price.ja} />
@@ -190,12 +200,12 @@ export function HomePage() {
       </section>
 
       <section ref={worksRef} className="section-band-white section-band-py relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(90,143,168,0.12),transparent_30rem)]" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(95,149,168,0.12),transparent_30rem)]" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 md:px-6">
           <SectionTitle en={dict.home.works.en} ja={dict.home.works.ja} />
           <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {flattenWorkCases(getWorkCaseGroups(locale))
-              .slice(0, 6)
+              .slice(0, 3)
               .map((w) => (
                 <WorkCaseStudyCard
                   key={w.id}
@@ -226,13 +236,13 @@ export function HomePage() {
       <TestimonialsBand />
 
       <section ref={faqRef} className="section-band-white section-band-py relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(207,92,73,0.08),transparent_32rem)]" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(47,127,150,0.08),transparent_32rem)]" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-4 md:px-6">
           <div className="mx-auto max-w-2xl">
             <SectionTitle en={dict.home.faq.en} ja={dict.home.faq.ja} align="center" />
           </div>
-          <div className="rounded-3xl border border-sand-200/70 bg-sand-50/45 p-3 shadow-[0_24px_70px_rgba(30,51,71,0.07)] md:p-4">
-            <FAQAccordion items={dict.faq.items.slice(0, 4)} />
+          <div className="rounded-3xl border border-sand-200/70 bg-sand-50/45 p-3 shadow-[0_24px_70px_rgba(29,52,72,0.07)] md:p-4">
+            <FAQAccordion items={dict.faq.items.slice(0, 6)} />
           </div>
           <div className="mt-10 text-center">
             <Button to="/faq" variant="outline">{dict.home.faq.viewAll}</Button>
@@ -243,13 +253,13 @@ export function HomePage() {
       <section ref={blogRef} className="section-band-washi section-band-py">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <SectionTitle en={dict.home.blog.en} ja={dict.home.blog.ja} />
-          <div className="grid items-stretch gap-6 md:grid-cols-3">
-            {getBlogPosts(locale).slice(0, 3).map((p) => (
+          <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {getBlogPosts(locale).slice(0, 6).map((p) => (
               <div
                 key={p.id}
                 className="group relative h-full"
               >
-                <div className="absolute -left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-coral-500/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute -left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-aizome-500/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <BlogCard {...p} />
               </div>
             ))}

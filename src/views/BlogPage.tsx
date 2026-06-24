@@ -64,11 +64,11 @@ export function BlogPage() {
         <ServiceStackSection />
       </section>
       <section ref={ref} className="section-band-white section-band-py relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(207,92,73,0.08),transparent_34rem)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,127,150,0.08),transparent_34rem)]" />
         <div className="mx-auto max-w-6xl px-4 md:px-6 relative">
           <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-display text-xs font-semibold uppercase tracking-[0.24em] text-coral-500">
+              <p className="font-display text-xs font-semibold uppercase tracking-[0.24em] text-navy-700/70">
                 Insights
               </p>
               <h2 className="mt-3 text-2xl font-bold text-navy-950 md:text-3xl">
@@ -104,8 +104,8 @@ export function BlogPage() {
                   onClick={() => setPage(p)}
                   className={`flex h-10 w-10 items-center justify-center rounded-full border text-sm font-medium transition-colors ${
                     p === currentPage
-                      ? 'border-coral-500 bg-coral-500 text-white'
-                      : 'border-sand-200 hover:border-coral-500 hover:bg-coral-500/10'
+                      ? 'border-button-500 bg-button-500 text-brand-ink'
+                      : 'border-sand-200 hover:border-button-500 hover:bg-button-500/10'
                   }`}
                 >
                   {p}

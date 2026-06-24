@@ -37,8 +37,8 @@ export const testimonials: Testimonial[] = [
     author: 'アパレルブランド B社',
     role: '担当者',
     initials: 'BK',
-    avatarFrom: '#c45c48',
-    avatarTo: '#d97a6a',
+    avatarFrom: '#2f7f96',
+    avatarTo: '#8acaa2',
   },
   {
     id: '3',

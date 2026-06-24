@@ -24,10 +24,10 @@ export function LanguageSwitcher({ className = '', tone = 'dark' }: Props) {
         onClick={() => setLocale('ja')}
         className={`rounded-full px-2.5 py-1 transition-colors ${
           locale === 'ja'
-            ? 'bg-coral-500 text-white'
+            ? 'bg-button-500 text-brand-ink'
             : isLight
               ? 'text-header-muted hover:text-navy-900'
-              : 'text-white/70 hover:text-white'
+              : 'text-brand-ink/70 hover:text-brand-ink'
         }`}
         aria-pressed={locale === 'ja'}
       >
@@ -38,10 +38,10 @@ export function LanguageSwitcher({ className = '', tone = 'dark' }: Props) {
         onClick={() => setLocale('en')}
         className={`rounded-full px-2.5 py-1 transition-colors ${
           locale === 'en'
-            ? 'bg-coral-500 text-white'
+            ? 'bg-button-500 text-brand-ink'
             : isLight
               ? 'text-header-muted hover:text-navy-900'
-              : 'text-white/70 hover:text-white'
+              : 'text-brand-ink/70 hover:text-brand-ink'
         }`}
         aria-pressed={locale === 'en'}
       >

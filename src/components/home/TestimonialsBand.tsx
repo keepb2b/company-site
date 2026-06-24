@@ -6,7 +6,7 @@ type TestimonialItem = Dictionary['testimonials']['items'][number]
 
 function TestimonialCard({ item }: { item: TestimonialItem }) {
   return (
-    <article className="testimonial-card flex w-[min(360px,86vw)] shrink-0 flex-col rounded-lg border border-sand-200/80 bg-white/95 p-6 shadow-[0_18px_48px_rgba(30,51,71,0.08)] ring-1 ring-white/70 backdrop-blur transition-transform duration-300 hover:-translate-y-1 md:w-[430px] md:p-7">
+    <article className="testimonial-card flex w-[min(360px,86vw)] shrink-0 flex-col rounded-lg border border-sand-200/80 bg-white/95 p-6 shadow-[0_18px_48px_rgba(29,52,72,0.08)] ring-1 ring-white/70 backdrop-blur transition-transform duration-300 hover:-translate-y-1 md:w-[430px] md:p-7">
       <div className="flex items-center justify-between gap-4">
         <div className="flex min-w-0 items-center gap-3">
           <div
@@ -55,7 +55,7 @@ export function TestimonialsBand() {
   return (
     <section className="page-section section-band-washi-deep section-band-py relative overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(90,143,168,0.16),transparent_34rem)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(95,149,168,0.16),transparent_34rem)]"
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl px-4 md:px-6">

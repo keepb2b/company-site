@@ -87,7 +87,7 @@ export function WorksPage() {
               group.cases.map((item) => (
                 <div key={item.id}>
                   <div className="mb-6 flex flex-wrap items-baseline gap-3 border-b border-sand-200 pb-4">
-                    <span className="font-display text-3xl font-bold text-coral-500">
+                    <span className="font-display text-3xl font-bold text-navy-900">
                       {group.serviceNumber}
                     </span>
                     <h2 className="text-xl font-bold text-navy-900 md:text-2xl">{group.serviceTitle}</h2>
@@ -122,8 +122,8 @@ export function WorksPage() {
                   onClick={() => setPage(p)}
                   className={`flex h-10 w-10 items-center justify-center rounded-full border text-sm font-medium transition-colors ${
                     p === currentPage
-                      ? 'border-coral-500 bg-coral-500 text-white'
-                      : 'border-sand-200 hover:border-coral-500 hover:bg-coral-500/10'
+                      ? 'border-button-500 bg-button-500 text-brand-ink'
+                      : 'border-sand-200 hover:border-button-500 hover:bg-button-500/10'
                   }`}
                 >
                   {p}

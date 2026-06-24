@@ -113,7 +113,7 @@ export function ContactPage() {
                 <p className="text-center text-sm font-bold text-navy-800">{dict.contact.success}</p>
               )}
               {status === 'error' && (
-                <p className="text-center text-sm font-bold text-coral-600">
+                <p className="text-center text-sm font-bold text-navy-900">
                   送信に失敗しました。時間をおいて再度お試しください。
                 </p>
               )}

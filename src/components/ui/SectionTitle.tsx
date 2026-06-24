@@ -8,11 +8,7 @@ type SectionTitleProps = {
 export function SectionTitle({ en, ja, align = 'left', light = false }: SectionTitleProps) {
   return (
     <div className={`mb-10 md:mb-14 ${align === 'center' ? 'text-center' : ''}`}>
-      <p
-        className={`font-display text-xs font-semibold uppercase tracking-[0.2em] ${
-          light ? 'text-coral-400' : 'text-coral-500'
-        }`}
-      >
+      <p className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-navy-700/70">
         {en}
       </p>
       <h2

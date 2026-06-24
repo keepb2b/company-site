@@ -1,4 +1,4 @@
-import { appendFile, mkdir } from 'node:fs/promises'
+import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
@@ -33,6 +33,58 @@ function hasMailConfig(config: {
   from?: string
 }) {
   return Boolean(config.host && config.user && config.pass && config.to && config.from)
+}
+
+async function canSendMailToday() {
+  const limit = Number(process.env.DAILY_LIMIT ?? 0)
+
+  if (!Number.isFinite(limit) || limit <= 0) {
+    return true
+  }
+
+  const filePath = process.env.CONTACT_DAILY_LIMIT_FILE ?? join(process.cwd(), 'contact-daily-limit.json')
+  const today = new Date().toISOString().slice(0, 10)
+
+  try {
+    const raw = await readFile(filePath, 'utf8')
+    const record = JSON.parse(raw) as { date?: string; count?: number }
+
+    if (record.date !== today) {
+      return true
+    }
+
+    return (record.count ?? 0) < limit
+  } catch {
+    return true
+  }
+}
+
+async function recordMailSent() {
+  const limit = Number(process.env.DAILY_LIMIT ?? 0)
+
+  if (!Number.isFinite(limit) || limit <= 0) {
+    return
+  }
+
+  const filePath = process.env.CONTACT_DAILY_LIMIT_FILE ?? join(process.cwd(), 'contact-daily-limit.json')
+  const today = new Date().toISOString().slice(0, 10)
+
+  try {
+    await mkdir(dirname(filePath), { recursive: true })
+
+    let count = 0
+    try {
+      const raw = await readFile(filePath, 'utf8')
+      const record = JSON.parse(raw) as { date?: string; count?: number }
+      count = record.date === today ? record.count ?? 0 : 0
+    } catch {
+      count = 0
+    }
+
+    await writeFile(filePath, JSON.stringify({ date: today, count: count + 1 }), 'utf8')
+  } catch (error) {
+    console.error('Failed to update contact daily limit file', error)
+  }
 }
 
 async function saveSubmission(submission: ContactSubmission) {
@@ -83,14 +135,19 @@ export async function POST(request: Request) {
   const host = process.env.SMTP_HOST
   const port = Number(process.env.SMTP_PORT ?? 587)
   const user = process.env.SMTP_USER
-  const pass = process.env.SMTP_PASS
-  const to = process.env.CONTACT_TO_EMAIL
-  const from = process.env.CONTACT_FROM_EMAIL ?? user
+  const pass = process.env.SMTP_PASS ?? process.env.SMTP_PASSWORD
+  const to = process.env.CONTACT_TO_EMAIL ?? process.env.CONTACT_EMAIL_TO
+  const from = process.env.CONTACT_FROM_EMAIL ?? process.env.SMTP_FROM ?? user
 
   try {
     if (!hasMailConfig({ host, user, pass, to, from })) {
       const delivery = await saveSubmission(submission)
       return NextResponse.json({ ok: true, delivery })
+    }
+
+    if (!(await canSendMailToday())) {
+      const delivery = await saveSubmission(submission)
+      return NextResponse.json({ ok: true, delivery, mailSkipped: 'daily-limit' })
     }
 
     const transporter = nodemailer.createTransport({
@@ -117,6 +174,8 @@ export async function POST(request: Request) {
         submission.message,
       ].join('\n'),
     })
+
+    await recordMailSent()
 
     return NextResponse.json({ ok: true, delivery: 'mail' })
   } catch (error) {

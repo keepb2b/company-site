@@ -29,7 +29,7 @@ export function ChatworkPage() {
                 href="https://www.chatwork.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-coral-500 px-8 py-3 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-coral-600 hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--color-button-400)_0%,var(--color-button-600)_100%)] px-8 py-3 text-sm font-semibold text-brand-ink shadow-lg shadow-[rgba(255,139,26,0.24)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:brightness-105"
               >
                 <span className="whitespace-nowrap">
                   {dict.chatwork?.signup || 'New Member Sign-up (Free)'}
@@ -42,7 +42,7 @@ export function ChatworkPage() {
                 href="https://www.chatwork.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-coral-500 hover:underline"
+                className="text-sm text-navy-900 underline-offset-4 hover:underline"
               >
                 {dict.chatwork?.login || 'Log in here'}
               </a>
@@ -55,7 +55,7 @@ export function ChatworkPage() {
               <div className="mt-6 flex items-start gap-4">
                 <div className="relative shrink-0">
                   <img
-                    src="https://ui-avatars.com/api/?name=John+Doe&background=c45c48&color=fff&size=128&bold=true"
+                    src="https://ui-avatars.com/api/?name=John+Doe&background=2f7f96&color=f3f7f8&size=128&bold=true"
                     alt="Staff"
                     className="h-20 w-20 rounded-full object-cover shadow-md ring-4 ring-white"
                     suppressHydrationWarning
@@ -93,7 +93,7 @@ export function ChatworkPage() {
                       href="https://nippon-systems.example"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-coral-500 hover:underline"
+                      className="text-navy-900 underline-offset-4 hover:underline"
                     >
                       https://nippon-systems.example
                     </a>

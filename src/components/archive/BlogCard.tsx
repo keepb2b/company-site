@@ -14,10 +14,18 @@ export function BlogCard({ title, date, category, image, onClick }: Props) {
       onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
       data-cursor-hover
     >
-      <article className="flex h-full min-h-[360px] overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-[0_18px_45px_rgba(30,51,71,0.08)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-coral-500/35 group-hover:shadow-[0_24px_60px_rgba(30,51,71,0.14)]">
+      <article className="relative flex h-full min-h-[390px] overflow-hidden border border-aizome-300/45 bg-white shadow-[0_18px_45px_rgba(29,52,72,0.1)] ring-1 ring-white/80 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-aizome-500/45 group-hover:shadow-[0_26px_70px_rgba(29,52,72,0.16)]">
+        <span
+          className="pointer-events-none absolute right-0 top-0 z-20 h-14 w-14 bg-aizome-300/70 shadow-[-8px_8px_16px_rgba(29,52,72,0.12)] [clip-path:polygon(100%_0,100%_100%,0_0)] md:h-16 md:w-16"
+          aria-hidden
+        />
+        <span
+          className="pointer-events-none absolute right-0 top-0 z-30 h-14 w-14 border-r border-t border-white/70 bg-white/45 [clip-path:polygon(100%_0,100%_100%,0_0)] md:h-16 md:w-16"
+          aria-hidden
+        />
         <div className="flex min-w-0 flex-1 flex-col">
-          <div className="p-3 pb-0">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-sand-100">
+          <div className="border-b border-aizome-300/25 bg-sand-50 p-4 pb-3">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-sand-100 shadow-inner">
               <img
                 src={image}
                 alt={title}
@@ -25,21 +33,21 @@ export function BlogCard({ title, date, category, image, onClick }: Props) {
                 loading="lazy"
                 suppressHydrationWarning
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/35 via-transparent to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/25 via-transparent to-transparent" aria-hidden />
               <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-white/90 px-3 py-1 text-xs font-semibold text-navy-900 shadow-sm backdrop-blur">
                 {category}
               </span>
             </div>
           </div>
           <div className="flex flex-1 flex-col p-5 md:p-6">
-            <time className="text-xs font-semibold text-coral-500" dateTime={formattedDate}>
+            <time className="text-xs font-semibold text-navy-700/65" dateTime={formattedDate}>
               {formattedDate}
             </time>
-            <h3 className="mt-3 line-clamp-3 text-lg font-bold leading-snug text-navy-950 transition-colors group-hover:text-coral-600">
+            <h3 className="mt-3 line-clamp-4 text-lg font-bold leading-snug text-navy-950">
               {title}
             </h3>
-            <div className="mt-auto pt-6">
-              <span className="inline-flex items-center text-sm font-semibold text-navy-900 transition-colors group-hover:text-coral-600">
+            <div className="mt-auto border-t border-sand-200 pt-5">
+              <span className="inline-flex items-center text-sm font-semibold text-navy-900">
                 Read more
                 <span className="ml-2 transition-transform group-hover:translate-x-1">-&gt;</span>
               </span>

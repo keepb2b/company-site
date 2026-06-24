@@ -31,7 +31,7 @@ export function NumberedReasonBlock({ number, title, description, imageAlt, reve
         </div>
       </div>
       <div>
-        <p className="font-display text-sm font-semibold text-coral-500">{number}</p>
+        <p className="font-display text-sm font-semibold text-navy-700/70">{number}</p>
         <h3 className="mt-2 text-2xl font-bold text-navy-900 md:text-3xl">{title}</h3>
         <p className="mt-4 leading-relaxed text-navy-700/85">{description}</p>
       </div>

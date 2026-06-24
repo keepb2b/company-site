@@ -85,17 +85,17 @@ export function ServiceStackCarousel() {
               }}
             >
               <article
-                className={`overflow-hidden rounded-[1.35rem] border bg-white/95 shadow-[0_22px_55px_rgba(30,51,71,0.1)] backdrop-blur transition-all duration-300 ${
+                className={`overflow-hidden rounded-[1.35rem] border bg-white/95 shadow-[0_22px_55px_rgba(29,52,72,0.1)] backdrop-blur transition-all duration-300 ${
                   isCenter
-                    ? 'border-aizome-300/70 shadow-[0_28px_70px_rgba(30,51,71,0.16)] ring-1 ring-aizome-300/40'
+                    ? 'border-aizome-300/70 shadow-[0_28px_70px_rgba(29,52,72,0.16)] ring-1 ring-aizome-300/40'
                     : 'border-sand-200/80'
                 }`}
               >
                 <div className="flex items-center justify-between border-b border-aizome-300/20 bg-gradient-to-r from-sand-50 via-white to-aizome-300/20 px-4 py-3">
                   <div className="flex items-center gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-coral-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#f3c96b]" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#28c76f]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-aizome-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-matsu-500" />
                   </div>
                   <span className="h-1.5 w-16 rounded-full bg-navy-900/8" />
                 </div>
@@ -114,7 +114,7 @@ export function ServiceStackCarousel() {
                       {item.stack.map((tech) => (
                         <li
                           key={tech}
-                          className="rounded-full border border-navy-900/15 bg-white px-2.5 py-1 text-[11px] font-semibold leading-none text-navy-800 shadow-[0_4px_12px_rgba(30,51,71,0.05)]"
+                          className="rounded-full border border-navy-900/15 bg-white px-2.5 py-1 text-[11px] font-semibold leading-none text-navy-800 shadow-[0_4px_12px_rgba(29,52,72,0.05)]"
                         >
                           {tech}
                         </li>
@@ -125,7 +125,7 @@ export function ServiceStackCarousel() {
                   <h3 className="line-clamp-2 min-h-[2.75rem] text-center text-base font-bold leading-snug text-navy-900 md:text-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-aizome-600">
+                  <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-navy-700/70">
                     {'< '}SERVICE {item.number}{' >'}
                   </p>
                 </div>
@@ -144,7 +144,7 @@ export function ServiceStackCarousel() {
             onClick={() => goTo(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === active
-                ? 'w-7 bg-coral-500 shadow-[0_0_0_3px_rgba(196,92,72,0.1)]'
+                ? 'w-7 bg-coral-500 shadow-[0_0_0_3px_rgba(47,127,150,0.08)]'
                 : 'w-1.5 bg-navy-700/20 hover:bg-aizome-500/60'
             }`}
           />
@@ -156,7 +156,7 @@ export function ServiceStackCarousel() {
           type="button"
           aria-label="Previous"
           onClick={() => goTo(active - 1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 bg-white text-navy-700 shadow-[0_10px_24px_rgba(30,51,71,0.08)] transition hover:-translate-y-0.5 hover:border-coral-500 hover:text-coral-500"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 bg-white text-navy-700 shadow-[0_10px_24px_rgba(29,52,72,0.08)] transition hover:-translate-y-0.5 hover:border-coral-500 hover:text-navy-900"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -166,7 +166,7 @@ export function ServiceStackCarousel() {
           type="button"
           aria-label="Next"
           onClick={() => goTo(active + 1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 bg-white text-navy-700 shadow-[0_10px_24px_rgba(30,51,71,0.08)] transition hover:-translate-y-0.5 hover:border-coral-500 hover:text-coral-500"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 bg-white text-navy-700 shadow-[0_10px_24px_rgba(29,52,72,0.08)] transition hover:-translate-y-0.5 hover:border-coral-500 hover:text-navy-900"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
