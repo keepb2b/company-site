@@ -3,9 +3,9 @@ import { feeTableSectionsEn } from '../data/feeTables.en'
 
 export const en: Dictionary = {
   meta: {
-    siteTitle: 'Nippon Systems | Technical Coding · E-Commerce · CMS Development',
+    siteTitle: 'Nippon System | Technical Coding · E-Commerce · CMS Development',
     siteDescription:
-      'Nippon Systems (日本システムズ) — B2B development partner for WordPress, e-commerce, CMS, React/Next.js, and web animation',
+      'Nippon System (日本システム) — B2B development partner for WordPress, e-commerce, CMS, React/Next.js, and web animation',
   },
   nav: {
     home: 'Home',
@@ -51,7 +51,7 @@ export const en: Dictionary = {
   },
   footer: {
     seo: 'Coding Outsourcing · WordPress · CMS · E-Commerce Development · Web Animation · React/Next.js · Shopify · EC-CUBE · MovableType · Headless CMS · Development Partner for Agencies',
-    copyright: '© Nippon Systems Inc. All rights reserved.',
+    copyright: '© Nippon System Inc. All rights reserved.',
   },
   home: {
     heroEyebrow: 'Technical Coding Partner',
@@ -77,7 +77,7 @@ export const en: Dictionary = {
     company: {
       en: 'Who We Are',
       ja: 'About Us',
-      desc: 'Since our founding in 2010, Nippon Systems has provided web coding and e-commerce/CMS development for agencies, advertising firms, and businesses. Our team of 50+ engineers balances quality and speed.',
+      desc: 'Since our founding in 2010, Nippon System has provided web coding and e-commerce/CMS development for agencies, advertising firms, and businesses. Our team of 50+ engineers balances quality and speed.',
       viewAll: 'View Company Profile',
     },
     nextSection: 'Go to next section',
@@ -86,7 +86,7 @@ export const en: Dictionary = {
     section: {
       enTitle: 'REASONS TO BE CHOSEN',
       jaSubtitle: 'Why Choose Us',
-      bannerText: 'Nippon Systems solves your front-end and coding challenges.',
+      bannerText: 'Nippon System solves your front-end and coding challenges.',
       ctaLabel: 'Learn More About Our Strengths',
     },
     page: { en: 'our strength', ja: 'Why Choose Us' },
@@ -519,7 +519,7 @@ export const en: Dictionary = {
       },
     ],
     rows: [
-      { label: 'Company Name', value: 'Nippon Systems Inc.' },
+      { label: 'Company Name', value: 'Nippon System Inc.' },
       { label: 'Representative', value: 'Yuki Maeda, President & CEO' },
       { label: 'Founded', value: 'April 2010' },
       { label: 'Capital', value: '¥30 million' },
@@ -578,11 +578,11 @@ export const en: Dictionary = {
     alreadySignedUp: 'If you have already signed up',
     login: 'Log in here',
     publicProfile: 'Public Profile',
-    name: 'NIPPON SYSTEMS',
-    id: 'ID: nippon-systems',
+    name: 'NIPPON SYSTEM',
+    id: 'ID: nippon-system',
     basicInfo: 'Basic Information',
     organization: 'Organization name:',
-    orgName: 'NIPPON SYSTEMS',
+    orgName: 'NIPPON SYSTEM',
     urlLabel: 'URL:',
     addressLabel: 'Address:',
     address: '1-1-1 Chiyoda, Chiyoda-ku, Tokyo 100-0001',

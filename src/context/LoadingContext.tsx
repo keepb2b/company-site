@@ -2,8 +2,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { SiteLoader } from '../components/effects/SiteLoader'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
-const CRITICAL_IMAGES = ['/images/nippon-systems-logo.png', '/images/hero-bg.png']
-const LOADER_SEEN_KEY = 'nippon-systems-intro-seen'
+const CRITICAL_IMAGES = ['/images/nippon-system-logo.png', '/images/hero-bg.png']
+const LOADER_SEEN_KEY = 'nippon-system-intro-seen'
 
 function hasSeenIntroLoader(): boolean {
   try {

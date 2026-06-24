@@ -29,8 +29,8 @@ export function GlobalFooter() {
       <div className="site-footer-inner">
         <div className="site-footer-main">
           <div className="site-footer-brand">
-            <Link href="/" className="site-footer-logo" aria-label="Nippon Systems">
-              <img src="/images/nippon-systems-logo.png" alt="Nippon Systems" suppressHydrationWarning />
+            <Link href="/" className="site-footer-logo" aria-label="Nippon System">
+              <img src="/images/nippon-system-logo.png" alt="Nippon System" suppressHydrationWarning />
             </Link>
 
             <address className="site-footer-address">

@@ -21,11 +21,11 @@ export function GlobalHeader() {
   return (
     <header className="site-header fixed top-0 right-0 left-0 isolate z-[60] border-b border-header-border bg-header-bg text-navy-900 shadow-[0_1px_0_rgba(255,255,255,0.6)_inset] md:bg-header-bg/95 md:backdrop-blur-md">
       <div className="site-header__inner mx-auto grid h-14 w-full min-w-0 max-w-[100rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-1.5 sm:gap-3 md:h-[4.25rem] 2xl:grid-cols-[auto_minmax(0,1fr)_auto]">
-        <Link href="/" className="header-logo-link flex min-w-0 items-center 2xl:col-start-1" aria-label="日本システムズ">
+        <Link href="/" className="header-logo-link flex min-w-0 items-center 2xl:col-start-1" aria-label="日本システム">
           <span className="header-logo-frame">
             <img
-              src="/images/nippon-systems-logo.png"
-              alt="日本システムズ"
+              src="/images/nippon-system-logo.png"
+              alt="日本システム"
               className="header-logo-img h-7 w-auto max-w-[88px] object-contain object-left sm:h-9 sm:max-w-[148px] 2xl:h-10 2xl:max-w-[190px]"
               width={190}
               height={40}
@@ -50,7 +50,7 @@ export function GlobalHeader() {
 
           <div className="hidden items-center gap-0.5 lg:flex">
             <a
-              href="mailto:info@nippon-systems.example"
+              href="mailto:info@nippon-system.example"
               className="shrink-0 rounded-full p-2 text-header-muted hover:bg-white/80 hover:text-navy-900"
               aria-label={dict.common.mail}
             >

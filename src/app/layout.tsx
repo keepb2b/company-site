@@ -3,7 +3,7 @@ import './globals.css'
 import { Providers } from './providers'
 
 export const metadata: Metadata = {
-  title: 'NIPPON SYSTEMS',
+  title: 'NIPPON SYSTEM',
   description: 'Web development, automation, AI chatbot, and ecommerce solutions.',
 }
 

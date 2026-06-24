@@ -3,7 +3,7 @@ import { en } from './en'
 import { ja } from './ja'
 import type { Dictionary, Locale } from './types'
 
-const STORAGE_KEY = 'nippon-systems-locale'
+const STORAGE_KEY = 'nippon-system-locale'
 
 const dictionaries: Record<Locale, Dictionary> = { ja, en }
 

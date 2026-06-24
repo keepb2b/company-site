@@ -64,7 +64,7 @@ export function ChatworkPage() {
                 </div>
                 <div>
                   <p className="text-lg font-semibold text-navy-900">
-                    {dict.chatwork?.name || 'NIPPON SYSTEMS'}
+                    {dict.chatwork?.name || 'NIPPON SYSTEM'}
                   </p>
                   <p className="text-sm text-navy-700/60">
                     ID: pikachu107
@@ -81,7 +81,7 @@ export function ChatworkPage() {
                     {dict.chatwork?.organization || 'Organization name:'}
                   </dt>
                   <dd className="text-navy-700/80">
-                    {dict.chatwork?.orgName || 'NIPPON SYSTEMS'}
+                    {dict.chatwork?.orgName || 'NIPPON SYSTEM'}
                   </dd>
                 </div>
                 <div className="flex flex-col sm:flex-row">
@@ -90,12 +90,12 @@ export function ChatworkPage() {
                   </dt>
                   <dd>
                     <a
-                      href="https://nippon-systems.example"
+                      href="https://nippon-system.example"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-navy-900 underline-offset-4 hover:underline"
                     >
-                      https://nippon-systems.example
+                      https://nippon-system.example
                     </a>
                   </dd>
                 </div>

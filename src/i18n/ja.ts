@@ -3,9 +3,9 @@ import { feeTableSectionsJa } from '../data/feeTables.ja'
 
 export const ja: Dictionary = {
   meta: {
-    siteTitle: '日本システムズ | 技術コーディング・EC・CMS開発',
+    siteTitle: '日本システム | 技術コーディング・EC・CMS開発',
     siteDescription:
-      '日本システムズ — WordPress・EC・CMS・React/Next.js・WebアニメーションのB2B開発パートナー',
+      '日本システム — WordPress・EC・CMS・React/Next.js・WebアニメーションのB2B開発パートナー',
   },
   nav: {
     home: 'ホーム',
@@ -51,7 +51,7 @@ export const ja: Dictionary = {
   },
   footer: {
     seo: 'コーディングアウトソーシング · WordPress · CMS · EC開発 · Webアニメーション · React/Next.js · Shopify · EC-CUBE · MovableType · ヘッドレスCMS · 制作会社向け開発パートナー',
-    copyright: '© 株式会社日本システムズ All rights reserved.',
+    copyright: '© 株式会社日本システム All rights reserved.',
   },
   home: {
     heroEyebrow: 'Technical Coding Partner',
@@ -77,7 +77,7 @@ export const ja: Dictionary = {
     company: {
       en: 'Who We Are',
       ja: '私たちについて',
-      desc: '株式会社日本システムズは、2010年の設立以来、制作会社・広告代理店・事業者様向けにWebコーディングとEC/CMS開発を提供してきました。50名以上のエンジニアが、品質とスピードの両立を追求します。',
+      desc: '株式会社日本システムは、2010年の設立以来、制作会社・広告代理店・事業者様向けにWebコーディングとEC/CMS開発を提供してきました。50名以上のエンジニアが、品質とスピードの両立を追求します。',
       viewAll: '会社概要を見る',
     },
     nextSection: '次のセクションへ',
@@ -86,7 +86,7 @@ export const ja: Dictionary = {
     section: {
       enTitle: 'REASONS TO BE CHOSEN',
       jaSubtitle: '選ばれる理由',
-      bannerText: '日本システムズは、御社のコーディングの悩みを解決します。',
+      bannerText: '日本システムは、御社のコーディングの悩みを解決します。',
       ctaLabel: '選ばれる理由をさらに読む',
     },
     page: { en: 'our strength', ja: '選ばれる理由' },
@@ -377,7 +377,7 @@ export const ja: Dictionary = {
       },
     ],
     rows: [
-      { label: '会社名', value: '株式会社日本システムズ' },
+      { label: '会社名', value: '株式会社日本システム' },
       { label: '代表者', value: '代表取締役 前田 雄紀' },
       { label: '設立', value: '2010年4月' },
       { label: '資本金', value: '3,000万円' },
@@ -436,11 +436,11 @@ export const ja: Dictionary = {
     alreadySignedUp: 'すでに登録済みの方',
     login: 'こちらからログイン',
     publicProfile: '公開プロフィール',
-    name: '株式会社日本システムズ',
-    id: 'ID: nippon-systems',
+    name: '株式会社日本システム',
+    id: 'ID: nippon-system',
     basicInfo: '基本情報',
     organization: '組織名:',
-    orgName: '株式会社日本システムズ',
+    orgName: '株式会社日本システム',
     urlLabel: 'URL:',
     addressLabel: '住所:',
     address: '〒100-0001 東京都千代田区千代田 1-1-1',

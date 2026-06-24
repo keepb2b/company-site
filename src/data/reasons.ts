@@ -19,7 +19,7 @@ export type Reason = {
 export const reasonsSection = {
   enTitle: 'REASONS TO BE CHOSEN',
   jaSubtitle: '選ばれる理由',
-  bannerText: '日本システムズは、御社のコーディングの悩みを解決します。',
+  bannerText: '日本システムは、御社のコーディングの悩みを解決します。',
   ctaLabel: '選ばれる理由をさらに読む',
 } as const
 

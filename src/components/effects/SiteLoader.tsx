@@ -71,7 +71,7 @@ export function SiteLoader({ ready, onComplete }: Props) {
       <div className="site-loader-inner">
         <span className="site-loader-logo-frame">
           <img
-            src="/images/nippon-systems-logo.png"
+            src="/images/nippon-system-logo.png"
             alt=""
             className="site-loader-logo"
             width={360}

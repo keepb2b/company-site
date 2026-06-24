@@ -1,5 +1,5 @@
 export const companyInfo = [
-  { label: '会社名', value: '株式会社日本システムズ' },
+  { label: '会社名', value: '株式会社日本システム' },
   { label: '代表者', value: '代表取締役 前田 雄紀' },
   { label: '設立', value: '2010年4月' },
   { label: '資本金', value: '3,000万円' },
