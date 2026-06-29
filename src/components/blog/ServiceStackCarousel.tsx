@@ -135,23 +135,7 @@ export function ServiceStackCarousel() {
         })}
       </div>
 
-      <div className="mt-5 flex justify-center gap-1.5">
-        {items.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to card ${i + 1}`}
-            onClick={() => goTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === active
-                ? 'w-7 bg-coral-500 shadow-[0_0_0_3px_rgba(47,127,150,0.08)]'
-                : 'w-1.5 bg-navy-700/20 hover:bg-aizome-500/60'
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="mt-4 flex justify-center gap-3">
+      <div className="mt-5 flex justify-center gap-3">
         <button
           type="button"
           aria-label="Previous"
