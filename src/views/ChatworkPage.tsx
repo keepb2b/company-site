@@ -75,36 +75,36 @@ export function ChatworkPage() {
               <h3 className="mt-8 text-lg font-semibold text-navy-900">
                 {dict.chatwork?.basicInfo || 'Basic Information'}
               </h3>
-              <dl className="mt-4 space-y-3 text-sm text-navy-700">
-                <div className="flex flex-col sm:flex-row">
-                  <dt className="w-full sm:w-40 font-medium text-navy-900">
+              <dl className="mt-4 divide-y divide-sand-200 border-y border-sand-200 text-sm">
+                <div className="grid gap-2 py-3 sm:grid-cols-[10rem_1fr]">
+                  <dt className="font-semibold text-navy-900">
                     {dict.chatwork?.organization || 'Organization name:'}
                   </dt>
-                  <dd className="text-navy-700/80">
+                  <dd className="text-navy-800">
                     {dict.chatwork?.orgName || 'NIPPON SYSTEM'}
                   </dd>
                 </div>
-                <div className="flex flex-col sm:flex-row">
-                  <dt className="w-full sm:w-40 font-medium text-navy-900">
+                <div className="grid gap-2 py-3 sm:grid-cols-[10rem_1fr]">
+                  <dt className="font-semibold text-navy-900">
                     {dict.chatwork?.urlLabel || 'URL:'}
                   </dt>
                   <dd>
                     <a
-                      href="https://nippon-system.example"
+                      href={dict.chatwork?.url || 'https://pingpongcompany.co.jp/'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-navy-900 underline-offset-4 hover:underline"
                     >
-                      https://nippon-system.example
+                      {dict.chatwork?.url || 'https://pingpongcompany.co.jp/'}
                     </a>
                   </dd>
                 </div>
-                <div className="flex flex-col sm:flex-row">
-                  <dt className="w-full sm:w-40 font-medium text-navy-900">
+                <div className="grid gap-2 py-3 sm:grid-cols-[10rem_1fr]">
+                  <dt className="font-semibold text-navy-900">
                     {dict.chatwork?.addressLabel || 'Address:'}
                   </dt>
-                  <dd className="text-navy-700/80">
-                    {dict.chatwork?.address || '〒100-0001 東京都千代田区千代田 1-1-1'}
+                  <dd className="text-navy-800">
+                    {dict.chatwork?.address || '本社 〒171-0031 東京都豊島区目白4-13-3 大和ビル2F'}
                   </dd>
                 </div>
               </dl>

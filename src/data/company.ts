@@ -1,12 +1,12 @@
 export const companyInfo = [
   { label: '会社名', value: '株式会社日本システム' },
   { label: '代表者', value: '代表取締役 前田 雄紀' },
-  { label: '設立', value: '2010年4月' },
+  { label: '設立', value: '2020年7月1日' },
   { label: '資本金', value: '3,000万円' },
   { label: '所在地（東京）', value: '東京都渋谷区〇〇 1-2-3 〇〇ビル 5F' },
   { label: '所在地（大阪）', value: '大阪府大阪市北区〇〇 4-5-6' },
   { label: '事業内容', value: 'Webコーディング、EC/CMS構築、フロントエンド開発、Webアニメーション制作' },
-  { label: '従業員数', value: '85名（2026年4月現在）' },
+  { label: '従業員数', value: '45名' },
 ] as const
 
 export type Testimonial = {

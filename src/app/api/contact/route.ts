@@ -1,5 +1,3 @@
-import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
-import { dirname, join } from 'node:path'
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
@@ -21,88 +19,76 @@ type ContactSubmission = {
   message: string
 }
 
+type ValidMailConfig = {
+  host: string
+  port: number
+  user: string
+  pass: string
+  to: string
+  from: string
+  secure: boolean
+}
+
+const SMTP_TIMEOUT_MS = 8000
+
 function readText(value: unknown) {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-function hasMailConfig(config: {
-  host?: string
-  user?: string
-  pass?: string
-  to?: string
-  from?: string
-}) {
-  return Boolean(config.host && config.user && config.pass && config.to && config.from)
+function readEnv(...names: string[]) {
+  for (const name of names) {
+    const value = process.env[name]?.trim()
+    if (value) return value
+  }
+
+  return undefined
 }
 
-async function canSendMailToday() {
-  const limit = Number(process.env.DAILY_LIMIT ?? 0)
+function readBooleanEnv(name: string, fallback: boolean) {
+  const value = process.env[name]?.trim().toLowerCase()
 
-  if (!Number.isFinite(limit) || limit <= 0) {
-    return true
-  }
-
-  const filePath = process.env.CONTACT_DAILY_LIMIT_FILE ?? join(process.cwd(), 'contact-daily-limit.json')
-  const today = new Date().toISOString().slice(0, 10)
-
-  try {
-    const raw = await readFile(filePath, 'utf8')
-    const record = JSON.parse(raw) as { date?: string; count?: number }
-
-    if (record.date !== today) {
-      return true
-    }
-
-    return (record.count ?? 0) < limit
-  } catch {
-    return true
-  }
+  if (!value) return fallback
+  return ['1', 'true', 'yes', 'on'].includes(value)
 }
 
-async function recordMailSent() {
-  const limit = Number(process.env.DAILY_LIMIT ?? 0)
+function getMailConfig() {
+  const host = readEnv('SMTP_HOST', 'MAIL_HOST')
+  const port = Number(readEnv('SMTP_PORT', 'MAIL_PORT') ?? 587)
+  const user = readEnv('SMTP_USER', 'SMTP_USERNAME', 'MAIL_USER')
+  const pass = readEnv('SMTP_PASS', 'SMTP_PASSWORD', 'MAIL_PASSWORD')
+  const to = readEnv('CONTACT_TO_EMAIL', 'CONTACT_EMAIL_TO', 'MAIL_TO')
+  const from = readEnv('CONTACT_FROM_EMAIL', 'SMTP_FROM', 'MAIL_FROM', 'SMTP_USER', 'SMTP_USERNAME', 'MAIL_USER')
+  const secure = readBooleanEnv('SMTP_SECURE', port === 465)
 
-  if (!Number.isFinite(limit) || limit <= 0) {
-    return
-  }
-
-  const filePath = process.env.CONTACT_DAILY_LIMIT_FILE ?? join(process.cwd(), 'contact-daily-limit.json')
-  const today = new Date().toISOString().slice(0, 10)
-
-  try {
-    await mkdir(dirname(filePath), { recursive: true })
-
-    let count = 0
-    try {
-      const raw = await readFile(filePath, 'utf8')
-      const record = JSON.parse(raw) as { date?: string; count?: number }
-      count = record.date === today ? record.count ?? 0 : 0
-    } catch {
-      count = 0
-    }
-
-    await writeFile(filePath, JSON.stringify({ date: today, count: count + 1 }), 'utf8')
-  } catch (error) {
-    console.error('Failed to update contact daily limit file', error)
-  }
+  return { host, port, user, pass, to, from, secure }
 }
 
-async function saveSubmission(submission: ContactSubmission) {
-  const filePath = process.env.CONTACT_FALLBACK_FILE ?? join(process.cwd(), 'contact-submissions.jsonl')
-  const record = {
-    createdAt: new Date().toISOString(),
-    ...submission,
+function getMissingMailConfig(config: ReturnType<typeof getMailConfig>) {
+  const missing: string[] = []
+
+  if (!config.host) missing.push('SMTP_HOST')
+  if (!Number.isFinite(config.port) || config.port <= 0) missing.push('SMTP_PORT')
+  if (!config.user) missing.push('SMTP_USER')
+  if (!config.pass) missing.push('SMTP_PASS')
+  if (!config.to) missing.push('CONTACT_TO_EMAIL')
+  if (!config.from) missing.push('CONTACT_FROM_EMAIL')
+
+  return missing
+}
+
+function formatMailbox(address: string) {
+  if (address.includes('<')) return address
+  return `"NIPPON SYSTEM Contact" <${address}>`
+}
+
+function assertMailConfig(config: ReturnType<typeof getMailConfig>): ValidMailConfig {
+  const missingConfig = getMissingMailConfig(config)
+
+  if (missingConfig.length > 0) {
+    throw new Error(`Missing mail config: ${missingConfig.join(', ')}`)
   }
 
-  try {
-    await mkdir(dirname(filePath), { recursive: true })
-    await appendFile(filePath, `${JSON.stringify(record)}\n`, 'utf8')
-    return 'file'
-  } catch (error) {
-    console.error('Failed to write contact submission fallback file', error)
-    console.info('Contact submission fallback', record)
-    return 'console'
-  }
+  return config as ValidMailConfig
 }
 
 export async function POST(request: Request) {
@@ -132,55 +118,57 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
-  const host = process.env.SMTP_HOST
-  const port = Number(process.env.SMTP_PORT ?? 587)
-  const user = process.env.SMTP_USER
-  const pass = process.env.SMTP_PASS ?? process.env.SMTP_PASSWORD
-  const to = process.env.CONTACT_TO_EMAIL ?? process.env.CONTACT_EMAIL_TO
-  const from = process.env.CONTACT_FROM_EMAIL ?? process.env.SMTP_FROM ?? user
+  const rawMailConfig = getMailConfig()
+  const missingConfig = getMissingMailConfig(rawMailConfig)
+
+  if (missingConfig.length > 0) {
+    console.error('Contact mail is not configured', { missingConfig })
+    return NextResponse.json(
+      { error: 'Email service is not configured', missingConfig },
+      { status: 500 },
+    )
+  }
 
   try {
-    if (!hasMailConfig({ host, user, pass, to, from })) {
-      const delivery = await saveSubmission(submission)
-      return NextResponse.json({ ok: true, delivery })
-    }
-
-    if (!(await canSendMailToday())) {
-      const delivery = await saveSubmission(submission)
-      return NextResponse.json({ ok: true, delivery, mailSkipped: 'daily-limit' })
-    }
-
+    const mailConfig = assertMailConfig(rawMailConfig)
     const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass },
+      host: mailConfig.host,
+      port: mailConfig.port,
+      secure: mailConfig.secure,
+      auth: { user: mailConfig.user, pass: mailConfig.pass },
+      connectionTimeout: SMTP_TIMEOUT_MS,
+      greetingTimeout: SMTP_TIMEOUT_MS,
+      socketTimeout: SMTP_TIMEOUT_MS,
+      tls: {
+        servername: mailConfig.host,
+      },
     })
 
-    await transporter.sendMail({
-      from,
-      to,
-      replyTo: submission.email,
-      subject: `Web contact: ${submission.company} ${submission.name}`,
-      text: [
-        'A contact form submission was received.',
-        '',
-        `Company: ${submission.company}`,
-        `Name: ${submission.name}`,
-        `Email: ${submission.email}`,
-        `Phone: ${submission.phone}`,
-        '',
-        'Message:',
-        submission.message,
-      ].join('\n'),
-    })
-
-    await recordMailSent()
+    try {
+      await transporter.sendMail({
+        from: formatMailbox(mailConfig.from),
+        to: mailConfig.to,
+        replyTo: submission.email,
+        subject: `Web contact: ${submission.company} ${submission.name}`,
+        text: [
+          'A contact form submission was received.',
+          '',
+          `Company: ${submission.company}`,
+          `Name: ${submission.name}`,
+          `Email: ${submission.email}`,
+          `Phone: ${submission.phone}`,
+          '',
+          'Message:',
+          submission.message,
+        ].join('\n'),
+      })
+    } finally {
+      transporter.close()
+    }
 
     return NextResponse.json({ ok: true, delivery: 'mail' })
   } catch (error) {
     console.error('Contact submission failed', error)
-    const delivery = await saveSubmission(submission)
-    return NextResponse.json({ ok: true, delivery, mailError: true })
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 502 })
   }
 }

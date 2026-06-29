@@ -33,7 +33,11 @@ export function ContactPage() {
                     body: JSON.stringify(payload),
                   })
 
-                  if (!res.ok) throw new Error('Failed to send contact form')
+                  if (!res.ok) {
+                    const error = await res.json().catch(() => null)
+                    console.error('Contact form failed', error)
+                    throw new Error('Failed to send contact form')
+                  }
 
                   setStatus('success')
                   form.reset()
@@ -123,7 +127,7 @@ export function ContactPage() {
           <div className="contact-map-card">
             <iframe
               title="Google Map"
-              src="https://www.google.com/maps?q=1-1-1%20Chiyoda%2C%20Chiyoda-ku%2C%20Tokyo%20100-0001&output=embed"
+              src="https://www.google.com/maps?q=%E3%80%92171-0031%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%B1%8A%E5%B3%B6%E5%8C%BA%E7%9B%AE%E7%99%BD4-13-3%20%E5%A4%A7%E5%92%8C%E3%83%93%E3%83%AB2F&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

@@ -11,9 +11,9 @@ export function CTASection() {
       <div className="footer-consult-card scroll-reveal">
         <div className="footer-consult-copy">
           <p className="footer-consult-lead">{dict.cta.title}</p>
-          <a href="tel:03-1234-5678" className="footer-consult-phone">
+          <a href="tel:0344008755" className="footer-consult-phone">
             <span aria-hidden>☎</span>
-            03-1234-5678
+            0344008755
           </a>
           <p className="footer-consult-hours">{dict.common.phoneHours}</p>
           <span className="footer-consult-watermark" aria-hidden>

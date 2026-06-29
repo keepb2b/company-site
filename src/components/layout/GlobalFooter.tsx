@@ -35,10 +35,8 @@ export function GlobalFooter() {
 
             <address className="site-footer-address">
               <p className="site-footer-address-title">{dict.common.tokyoOffice}</p>
-              <p>東京都渋谷区〇〇 1-2-3 〇〇ビル 5F</p>
-              <p className="site-footer-address-title mt-3">{dict.common.osakaOffice}</p>
-              <p>大阪府大阪市北区〇〇 4-5-6</p>
-              <p className="mt-3">TEL : 03-1234-5678　FAX : 03-1234-5578</p>
+              <p>本社 〒171-0031 東京都豊島区目白4-13-3 大和ビル2F</p>
+              <p className="mt-3">TEL : 0344008755</p>
             </address>
 
             <div className="site-footer-promos">

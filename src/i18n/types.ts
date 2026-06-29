@@ -164,6 +164,7 @@ export type Dictionary = {
     organization: string
     orgName: string
     urlLabel: string
+    url: string
     addressLabel: string
     address: string
     bio: string
