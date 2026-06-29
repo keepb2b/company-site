@@ -120,8 +120,8 @@ export const ja: Dictionary = {
       },
       {
         number: '04',
-        title: '50名以上のコーディングスタッフ',
-        gridTitle: '50名以上のコーディングスタッフ',
+        title: '40名以上のコーディングスタッフ',
+        gridTitle: '40名以上のコーディングスタッフ',
         description:
           'フロントエンド・CMS・EC・WordPressなど専門領域ごとにチームを編成。大規模案件にも柔軟に対応できます。',
         imageAlt: '開発チームのイメージ',

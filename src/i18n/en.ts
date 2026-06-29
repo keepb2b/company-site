@@ -120,8 +120,8 @@ export const en: Dictionary = {
       },
       {
         number: '04',
-        title: '50+ Coding Specialists',
-        gridTitle: '50+ Coding Specialists',
+        title: '40+ Coding Specialists',
+        gridTitle: '40+ Coding Specialists',
         description:
           'Teams organized by expertise — front-end, CMS, e-commerce, WordPress, and more. We scale flexibly for large projects.',
         imageAlt: 'Development team illustration',
